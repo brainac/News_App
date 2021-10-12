@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 import android.content.AsyncTaskLoader;
 import android.content.Context;
@@ -58,7 +58,7 @@ public class NewsLoader extends AsyncTaskLoader<List<News>> {
         }
 
         // Perform the network request, parse the response, and extract a list of news.
-        List<News> news = com.example.newsapp.QueryUtils.fetchNewsData(mUrl);
+        List<News> news = com.example.StarlinkNewsFeed.QueryUtils.fetchNewsData(mUrl);
         return news;
     }
 }

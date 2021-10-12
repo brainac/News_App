@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 import android.text.TextUtils;
 import android.util.Log;
@@ -150,6 +150,7 @@ public final class QueryUtils {
      * parsing the given JSON response.
      */
     private static List<News> extractFeatureFromJson(String newsJSON) {
+        int a = 0;
         // If the JSON string is empty or null, then return early.
         if (TextUtils.isEmpty(newsJSON)) {
             return null;
@@ -162,50 +163,62 @@ public final class QueryUtils {
         // is formatted, a JSONException exception object will be thrown.
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
-
             // Create a JSONObject from the JSON response string
-            JSONObject baseJsonResponse = new JSONObject(newsJSON);
+            JSONObject baseJsonObject = new JSONObject(newsJSON);
 
             // Extract the JSONObject associated with the key called "response",
             // which represents a list of news.
-            JSONObject newsObject = baseJsonResponse.getJSONObject("response");
+            JSONObject newsResponseObject = baseJsonObject.getJSONObject("response");
 
             // Extract the JSONArray associated with the key called "results",
             // which represents a list of news.
-            JSONArray jsonArrayResults = newsObject.getJSONArray("results");
+            JSONArray newsResultsArray = newsResponseObject.getJSONArray("results");
 
-            // For each news in the newsObject, create an {@link News} object
-            for (int i = 0; i < jsonArrayResults.length(); i++) {
+            // For each news in the newsResponseObject, create an {@link News} object
+            for (int i = 0; i < newsResultsArray.length(); i++) {
 
                 // Get a single news at position i within the list of news
-                JSONObject currentNews = jsonArrayResults.getJSONObject(i);
-
-                // For a given news, extract the JSONObject associated with the
-                // key called "properties", which represents a list of all properties
-                // for that news.
-                JSONObject fields = currentNews.getJSONObject("fields");
+                JSONObject newsResultsArrayObject = newsResultsArray.getJSONObject(i);
 
                 // Extract the value for the key called "webTitle"
-                String title = fields.getString("webTitle");
+                String title = newsResultsArrayObject.getString("webTitle");
 
                 // Extract the value for the key called "sectionName"
-                String section = fields.getString("sectionName");
-
-                // Extract the value for the keys called "firstName " and "lastName"
-                String author = fields.getString("firstName " + "lastName");
+                String section = newsResultsArrayObject.getString("sectionName");
 
                 // Extract the value for the key called "webPublicationDate"
-                String date = fields.getString("webPublicationDate");
+                String date = newsResultsArrayObject.getString("webPublicationDate");
+
 
                 // Extract the value for the key called "url"
-                String url = fields.getString("webUrl");
+                String url = newsResultsArrayObject.getString("webUrl");
 
-                // Create a new {@link News} object with the magnitude, location, time,
-                // and url from the JSON response.
-                News aNews = new News(title, section, author, date, url);
+                // Extract the value for the keys called "firstName " and "lastName"
 
-                // Add the new {@link News} to the list of news.
-                news.add(aNews);
+                JSONArray newsTagArray = newsResultsArrayObject.getJSONArray("tags");
+
+                if (a < newsTagArray.length()){
+                    JSONObject newsTagArrayObject = newsTagArray.getJSONObject(a);
+                    String firstName = newsTagArrayObject.getString("firstName");
+                    String lastName = newsTagArrayObject.getString("lastName");
+
+                    //Capitalize First Name
+                    String capFirstName = firstName.substring(0, 1).toUpperCase() + firstName.substring(1);
+
+                    //Capitalize Last Name
+                    String capLastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
+
+                    // Merge First Name and Last Name together
+                    String author = capFirstName +" "+ capLastName;
+
+                    // Create a new {@link News} object with the title, section, author, date,
+                    // and url from the JSON response.
+                    News aNews = new News(title, section, author, date, url);
+
+                    // Add the new {@link News} to the list of news.
+                    news.add(aNews);
+                }
+
             }
 
         } catch (JSONException e) {

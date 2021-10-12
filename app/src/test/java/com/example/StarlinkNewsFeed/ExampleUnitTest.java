@@ -1,4 +1,4 @@
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 import org.junit.Test;
 

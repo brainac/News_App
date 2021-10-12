@@ -1,4 +1,4 @@
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 import android.content.Context;
 import android.view.LayoutInflater;

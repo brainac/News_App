@@ -1,4 +1,4 @@
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 
 // A {@link News} object contains information related to a single News.

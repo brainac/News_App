@@ -1,4 +1,4 @@
-package com.example.newsapp;
+package com.example.StarlinkNewsFeed;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,8 +20,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
 
     // URL for Starlink data from the guardian dataset
-    public String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=Starlink&from-date=2014-01-01&show-tags=contri" +
-            "butor&page-size=10&api-key=35aaf8fe-2fe4-49d8-b8cc-6dbd6d547e99";
+    public String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=Starlink&show-tags=contributor&page-size=10&api-key=35aaf8fe-2fe4-49d8-b8cc-6dbd6d547e99";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
@@ -30,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
     private static final int NEWS_LOADER_ID = 1;
 
     /** Adapter for the list of News */
-    private com.example.newsapp.NewsAdapter mAdapter;
+    private com.example.StarlinkNewsFeed.NewsAdapter mAdapter;
 
     /** TextView that is displayed when the list is empty */
     private TextView mEmptyStateTextView;
@@ -47,7 +46,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         newsListView.setEmptyView(mEmptyStateTextView);
 
         // Create a new adapter that takes an empty list of news as input
-        mAdapter = new com.example.newsapp.NewsAdapter(this, new ArrayList<>());
+        mAdapter = new com.example.StarlinkNewsFeed.NewsAdapter(this, new ArrayList<>());
 
         // Set the adapter on the {@link ListView}
         // so the list can be populated in the user interface
@@ -102,10 +101,9 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Uri baseUri = Uri.parse(GUARDIAN_REQUEST_URL);
         Uri.Builder uriBuilder = baseUri.buildUpon();
 
-        uriBuilder.appendQueryParameter("format", "geojson");
-        uriBuilder.appendQueryParameter("limit", "10");
+        uriBuilder.appendQueryParameter("show-references", "author");
 
-        return new com.example.newsapp.NewsLoader(this, uriBuilder.toString());
+        return new com.example.StarlinkNewsFeed.NewsLoader(this, uriBuilder.toString());
     }
 
     @Override
