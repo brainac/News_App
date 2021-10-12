@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    style="@style/MatchParent"
     xmlns:tools="http://schemas.android.com/tools"
+    style="@style/MatchParent"
     android:orientation="vertical"
     android:padding="@dimen/medium_spacing">
 
@@ -9,41 +9,41 @@
         android:id="@+id/article_title_textView"
         style="@style/WrapContent"
         android:textColor="@color/web_link"
-        tools:text="Title:"/>
+        tools:text="Title:" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/small_spacing">
+        android:layout_marginTop="@dimen/small_spacing"
+        android:orientation="horizontal">
 
         <TextView
-            android:layout_marginTop="4dp"
             android:id="@+id/hashtag_section_textView"
             style="@style/WrapContent"
-            android:textStyle="bold"
+            android:layout_marginTop="4dp"
             android:text="@string/hash_tag"
+            android:textStyle="bold"
             tools:text="#" />
 
         <TextView
-            android:layout_marginTop="@dimen/mini_spacing"
             android:id="@+id/article_section_textView"
             style="@style/WrapContent"
+            android:layout_marginTop="@dimen/mini_spacing"
             tools:text="Section:" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="@dimen/small_spacing">
+        android:layout_marginTop="@dimen/small_spacing"
+        android:orientation="horizontal">
 
         <TextView
             android:id="@+id/article_author_textView"
             style="@style/WrapContent"
-            android:textStyle="bold"
             android:layout_weight="1"
-            tools:text="Author:"/>
+            android:textStyle="bold"
+            tools:text="Author:" />
 
         <TextView
             android:id="@+id/article_date_textView"

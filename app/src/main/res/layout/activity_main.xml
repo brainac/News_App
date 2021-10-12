@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Layout for a list of news -->
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?><!-- Layout for a list of news -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/MatchParent">
 
     <ListView
         android:id="@+id/list"
-        android:orientation="vertical"
         style="@style/MatchParent"
         android:divider="@color/divider_medium"
-        android:dividerHeight="1dp"/>
+        android:dividerHeight="1dp"
+        android:orientation="vertical" />
 
     <!-- Empty view is only visible when the list has no items. -->
     <TextView
         android:id="@+id/empty_view"
         style="@style/WrapContent"
         android:layout_centerInParent="true"
-        android:textAppearance="?android:textAppearanceMedium"/>
+        android:textAppearance="?android:textAppearanceMedium" />
 
     <!-- Loading indicator for user feedback between queries to the guardian -->
     <ProgressBar
@@ -24,6 +22,6 @@
         style="@style/Widget.AppCompat.ProgressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"/>
+        android:layout_centerInParent="true" />
 
 </RelativeLayout>

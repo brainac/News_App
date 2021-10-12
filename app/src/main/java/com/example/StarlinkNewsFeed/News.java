@@ -5,23 +5,27 @@ package com.example.StarlinkNewsFeed;
 
 public class News {
 
-private String newsTitle, newsSection, newsAuthor, newsDate, newsUrl;
+    private final String newsTitle;
+    private final String newsSection;
+    private final String newsAuthor;
+    private final String newsDate;
+    private final String newsUrl;
 
     /**
-     * @param title is the title of the news article
+     * @param title   is the title of the news article
      * @param section is the section the news article is grouped under
-     * @param author is the author of the news article
-     * @param date is the date of the news article was published
-     * @param url is the website URL to find more details about the news article
+     * @param author  is the author of the news article
+     * @param date    is the date of the news article was published
+     * @param url     is the website URL to find more details about the news article
      */
 
-public News (String title, String section, String author, String date, String url) {
-    this.newsTitle=title;
-    this.newsSection=section;
-    this.newsAuthor=author;
-    this.newsDate=date;
-    this.newsUrl=url;
-}
+    public News(String title, String section, String author, String date, String url) {
+        this.newsTitle = title;
+        this.newsSection = section;
+        this.newsAuthor = author;
+        this.newsDate = date;
+        this.newsUrl = url;
+    }
 
     // Returns the title of the news article
     public String getNewsTitle() {
@@ -29,15 +33,23 @@ public News (String title, String section, String author, String date, String ur
     }
 
     // Returns the section of the news article
-    public String getNewsSection() {return newsSection;}
+    public String getNewsSection() {
+        return newsSection;
+    }
 
     // Returns the author of the news article
-    public String getNewsAuthor() {return newsAuthor;}
+    public String getNewsAuthor() {
+        return newsAuthor;
+    }
 
     // Returns the date of the news article
-    public String getNewsDate() {return newsDate;}
+    public String getNewsDate() {
+        return newsDate;
+    }
 
     // Returns the url of the news article
-    public String getNewsUrl() {return newsUrl;}
+    public String getNewsUrl() {
+        return newsUrl;
+    }
 
 }

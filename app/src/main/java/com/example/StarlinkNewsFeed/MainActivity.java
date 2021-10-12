@@ -1,7 +1,5 @@
 package com.example.StarlinkNewsFeed;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
@@ -14,24 +12,28 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<News>> {
-
-    // URL for Starlink data from the guardian dataset
-    public String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=Starlink&show-tags=contributor&page-size=10&api-key=35aaf8fe-2fe4-49d8-b8cc-6dbd6d547e99";
 
     /**
      * Constant value for the news loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int NEWS_LOADER_ID = 1;
-
-    /** Adapter for the list of News */
+    // URL for Starlink data from the guardian dataset
+    public String GUARDIAN_REQUEST_URL = "https://content.guardianapis.com/search?q=Starlink&show-tags=contributor&page-size=10&api-key=35aaf8fe-2fe4-49d8-b8cc-6dbd6d547e99";
+    /**
+     * Adapter for the list of News
+     */
     private com.example.StarlinkNewsFeed.NewsAdapter mAdapter;
 
-    /** TextView that is displayed when the list is empty */
+    /**
+     * TextView that is displayed when the list is empty
+     */
     private TextView mEmptyStateTextView;
 
     @Override

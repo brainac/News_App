@@ -29,16 +29,18 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Helper methods related to requesting and receiving news data from theguardian.
+ * Helper methods related to requesting and receiving news data from the guardian.
  */
 public final class QueryUtils {
 
-    /** Tag for the log messages */
+    /**
+     * Tag for the log messages
+     */
     private static final String LOG_TAG = QueryUtils.class.getSimpleName();
 
     /**
@@ -134,7 +136,7 @@ public final class QueryUtils {
     private static String readFromStream(InputStream inputStream) throws IOException {
         StringBuilder output = new StringBuilder();
         if (inputStream != null) {
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, Charset.forName("UTF-8"));
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             BufferedReader reader = new BufferedReader(inputStreamReader);
             String line = reader.readLine();
             while (line != null) {
@@ -197,7 +199,7 @@ public final class QueryUtils {
 
                 JSONArray newsTagArray = newsResultsArrayObject.getJSONArray("tags");
 
-                if (a < newsTagArray.length()){
+                if (a < newsTagArray.length()) {
                     JSONObject newsTagArrayObject = newsTagArray.getJSONObject(a);
                     String firstName = newsTagArrayObject.getString("firstName");
                     String lastName = newsTagArrayObject.getString("lastName");
@@ -209,7 +211,7 @@ public final class QueryUtils {
                     String capLastName = lastName.substring(0, 1).toUpperCase() + lastName.substring(1);
 
                     // Merge First Name and Last Name together
-                    String author = capFirstName +" "+ capLastName;
+                    String author = capFirstName + " " + capLastName;
 
                     // Create a new {@link News} object with the title, section, author, date,
                     // and url from the JSON response.
